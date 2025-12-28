@@ -1,5 +1,4 @@
-# pillarworks
-## pillar creation kit
+# pillar creation kit
 
 check back later for documentation. just use the place file at assets/place.rbxl.
 
@@ -8,11 +7,12 @@ check back later for documentation. just use the place file at assets/place.rbxl
 2. nothing else is needed.
 
 ## rojo users
-1. install rokit.
+1. install rokit and pesde.
 2. run `rokit install` in a terminal or command prompt.
 3. run `rojo plugin install` in a terminal or command prompt.
-4. open the place file at assets/place.rbxl.
-5. depending on your ide of choice, go to your chapter below.
+4. run `pesde install` in a terminal or command prompt.
+5. open the place file at assets/place.rbxl.
+6. depending on your ide of choice, go to your chapter below.
 
 ### for zed
 1. for zed users, i have provided a list of tasks you can use by pressing alt + shift + t.
