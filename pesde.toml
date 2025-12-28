@@ -3,7 +3,7 @@ version = "0.1.0"
 description = "the official pillarworks pillar creation kit"
 authors = ["Primiti_ve"]
 repository = "https://github.com/pillarworks-rbx/kit"
-license = "The Unlicense"
+license = "MIT"
 
 [target]
 environment = "roblox"
@@ -22,9 +22,14 @@ sourcemap_generator = ".pesde/scripts/sourcemap_generator.luau"
 pesde = "^0.7.0"
 lune = "^0.10.2"
 
-[dependencies]
-iris = { wally = "sirmallard/iris", version = "^2.5.0" }
-
 [dev_dependencies]
 scripts = { name = "pesde/scripts_rojo", version = "^0.2.0", target = "lune" }
 rojo = { name = "pesde/rojo", version = "^7.5.1", target = "lune" }
+
+[dependencies]
+framework = { name = "pillarworks/framework", version = "^0.1.0" }
+group = { name = "pillarworks/group", version = "^0.1.1" }
+region = { name = "pillarworks/region", version = "^0.1.0" }
+iris = { wally = "sirmallard/iris", version = "^2.5.0" }
+stack = { name = "pillarworks/stack", version = "^0.1.0" }
+

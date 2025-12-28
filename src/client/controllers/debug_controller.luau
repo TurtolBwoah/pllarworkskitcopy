@@ -1,12 +1,14 @@
 --!optimize 2
 --!native
 
-local group = require("@shared/modules/group")
+local group = require("@pkg/group")
 
 local debugger = require("@shared/debugger")
 local iris = debugger.iris
 
 local debug_controller = {}
+
+debug_controller.identifier = "debug_controller"
 
 export type self = typeof(debug_controller)
 

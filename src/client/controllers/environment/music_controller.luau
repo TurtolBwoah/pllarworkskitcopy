@@ -5,10 +5,12 @@ local CollectionService = game:GetService("CollectionService")
 local SoundService = game:GetService("SoundService")
 local TweenService = game:GetService("TweenService")
 
-local group = require("@shared/modules/group")
-local region_manager = require("@shared/modules/region_manager")
+local group = require("@pkg/group")
+local region = require("@pkg/region")
 
 local music_controller = {}
+
+music_controller.identifier = "music_controller"
 
 export type self = typeof(music_controller)
 
@@ -114,7 +116,7 @@ function music_controller.start(self: self)
 	local regions = {}
 
 	for _, zone in pairs(zones) do
-		local region = region_manager.new(zone, {
+		local new_region = region.new(zone, {
 			enter = function()
 				if current_zone ~= zone then
 					current_zone = zone
@@ -132,14 +134,8 @@ function music_controller.start(self: self)
 			end,
 		})
 
-		table.insert(regions, region)
+		table.insert(regions, new_region)
 	end
-
-	self.group:add(function()
-		for _, region in pairs(regions) do
-			--region_manager.remove(region)
-		end
-	end)
 end
 
 function music_controller.stop(self: self)

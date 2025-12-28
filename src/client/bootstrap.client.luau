@@ -7,11 +7,11 @@ local player = Players.LocalPlayer or Players.PlayerAdded:Wait()
 local bootstrap = require("@shared/modules/bootstrap")
 local misc_utils = require("@shared/utils/misc")
 
-local combined_controllers = Instance.new("Folder")
+local combined_controllers = {}
 local client_controllers = script.Parent.controllers
 
 --// copy client controllers to combined controllers
-misc_utils.copy(client_controllers, combined_controllers)
+misc_utils.traverse(client_controllers, combined_controllers)
 
 function character_added()
 	--// bootstrap controllers

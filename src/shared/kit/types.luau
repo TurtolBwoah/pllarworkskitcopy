@@ -1,7 +1,7 @@
 --!optimize 2
 --!native
 
-local group = require("@shared/modules/group")
+local group = require("@pkg/group")
 
 export type pillar = {
     id: string,
@@ -20,13 +20,13 @@ export type object<T> = T & {
 
 	attributes: { [string]: { [string]: any } },
 
-	group: group.ItemGroup,
+	group: group.item_group,
 	instance: BasePart,
 }
 
 export type pillar_data = {
 	id: string,
-	group: group.ItemGroup,
+	group: group.item_group,
 }
 
 return nil

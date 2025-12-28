@@ -4,9 +4,11 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local assets = ReplicatedStorage:WaitForChild("assets") :: Folder?
 
-local group = require("@shared/modules/group")
+local group = require("@pkg/group")
 
 local kit_service = {}
+
+kit_service.identifier = "kit_service"
 
 export type self = typeof(kit_service)
 

@@ -5,9 +5,11 @@ local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local CollectionService = game:GetService("CollectionService")
 
-local group = require("@shared/modules/group")
+local group = require("@pkg/group")
 
 local movement_controller = {}
+
+movement_controller.identifier = "movement_controller"
 
 export type self = typeof(movement_controller)
 

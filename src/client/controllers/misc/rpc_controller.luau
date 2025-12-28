@@ -1,10 +1,12 @@
 --!optimize 2
 --!native
 
-local group = require("@shared/modules/group")
+local group = require("@pkg/group")
 local rpc = require("@shared/modules/rpc")
 
 local rpc_controller = {}
+
+rpc_controller.identifier = "rpc_controller"
 
 export type self = typeof(rpc_controller)
 

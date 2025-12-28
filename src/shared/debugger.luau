@@ -2,7 +2,7 @@
 --!native
 
 local iris = require("@pkg/iris").Init()
-local stack = require("@shared/modules/stack")
+local stack = require("@pkg/stack")
 
 export type log = {
 	message: string,
@@ -12,8 +12,10 @@ export type log = {
 	count: number,
 }
 
+local MAX_LOGS = 200
+
 local debuggers = {}
-local output = stack.new(200)
+local output = stack.new(MAX_LOGS)
 
 local started = false
 

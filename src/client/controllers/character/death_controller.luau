@@ -3,9 +3,11 @@
 
 local Players = game:GetService("Players")
 
-local group = require("@shared/modules/group")
+local group = require("@pkg/group")
 
 local death_controller = {}
+
+death_controller.identifier = "death_controller"
 
 export type self = typeof(death_controller)
 

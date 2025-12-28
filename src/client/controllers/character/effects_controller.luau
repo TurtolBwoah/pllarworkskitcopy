@@ -4,7 +4,7 @@
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 
-local group = require("@shared/modules/group")
+local group = require("@pkg/group")
 
 local debugger = require("@shared/debugger")
 local effects = require("@shared/utils/effects")
@@ -13,6 +13,8 @@ local std = require("@kit/std")
 local utility = std.utility
 
 local effects_controller = {}
+
+effects_controller.identifier = "effects_controller"
 
 export type self = typeof(effects_controller)
 

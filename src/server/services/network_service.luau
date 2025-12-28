@@ -3,11 +3,12 @@
 
 local RunService = game:GetService("RunService")
 
-local group = require("@shared/modules/group")
-
+local group = require("@pkg/group")
 local network = require("@shared/network/server")
 
 local network_service = {}
+
+network_service.identifier = "network_service"
 
 export type self = typeof(network_service)
 

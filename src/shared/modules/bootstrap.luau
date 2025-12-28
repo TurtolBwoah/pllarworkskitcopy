@@ -1,9 +1,11 @@
 --!optimize 2
 --!native
 
-return function(services: Folder)
-    local framework = require("@shared/modules/framework")
-    
-	--// run all services
-	framework.run(services)
+local framework = require("@pkg/framework")
+
+return function(singletons: { framework.singleton })
+	framework.run({
+		singletons = singletons,
+		lifecycles = { "init", "start", "stop" },
+	})
 end

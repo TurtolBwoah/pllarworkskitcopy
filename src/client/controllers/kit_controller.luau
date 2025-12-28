@@ -7,7 +7,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local assets = ReplicatedStorage:WaitForChild("assets") :: Folder?
 local unloaded_objects = assets and assets:WaitForChild("unloaded_objects") :: Folder?
 
-local group = require("@shared/modules/group")
+local group = require("@pkg/group")
 local debugger = require("@shared/debugger")
 
 local kit_types = require("@kit/types")
@@ -17,6 +17,8 @@ local std = require("@kit/std")
 local utility = std.utility
 
 local kit_controller = {}
+
+kit_controller.identifier = "kit_controller"
 
 local OBJECT_TAG = "pillarworks_obj"
 local OBJECT_TYPES = {}
