@@ -1,26 +1,28 @@
 --!optimize 2
 --!native
 
+local CollectionService = game:GetService("CollectionService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local KIT_TAG = "pillarworks_kit"
 local assets = ReplicatedStorage:WaitForChild("assets") :: Folder?
 
 local group = require("@pkg/group")
 
 local kit_service = {}
 
+kit_service.priority = 2
 kit_service.identifier = "kit_service"
 
 export type self = typeof(kit_service)
 
-function kit_service.prepare_pillar(self: self)
+function kit_service.prepare_pillar(self: self, pillar: Folder)
 	if not assets then
 		return
 	end
 
-	local pillar = workspace:WaitForChild("pillar") :: Folder?
-
 	if pillar then
-		local objects = pillar:WaitForChild("objects") :: Folder?
+		local objects = pillar:WaitForChild("objects") :: Folder
 
 		if objects then
 			objects.Name = "unloaded_objects"
@@ -30,11 +32,18 @@ function kit_service.prepare_pillar(self: self)
 end
 
 function kit_service.start(self: self)
+    print("started")
 	--// initialize group for this service
 	self.group = group.create()
 
-	--// prepare the pillar
-	self:prepare_pillar()
+	local pillars = CollectionService:GetTagged(KIT_TAG)
+	local pillar = pillars[1]
+	
+	print(pillar)
+	
+	if pillar and pillar:HasTag(KIT_TAG) and pillar:IsA("Folder") then
+		self:prepare_pillar(pillar)
+	end
 end
 
 function kit_service.stop(self: self)

@@ -10,6 +10,7 @@ local region = require("@pkg/region")
 
 local music_controller = {}
 
+music_controller.priority = 3
 music_controller.identifier = "music_controller"
 
 export type self = typeof(music_controller)

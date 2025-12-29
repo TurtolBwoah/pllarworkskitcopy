@@ -9,6 +9,7 @@ local group = require("@pkg/group")
 
 local movement_controller = {}
 
+movement_controller.priority = 2
 movement_controller.identifier = "movement_controller"
 
 export type self = typeof(movement_controller)

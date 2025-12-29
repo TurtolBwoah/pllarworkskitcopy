@@ -8,21 +8,22 @@ local network = require("@shared/network/server")
 
 local network_service = {}
 
+network_service.priority = 1
 network_service.identifier = "network_service"
 
 export type self = typeof(network_service)
 
 function network_service.handle_character(self: self, delta_time: number)
-	for _, player, cframe in network.reload_character.iter() do		
+	for _, player, cframe in network.reload_character.iter() do
 		--// reload their character
 		player:LoadCharacterAsync()
-		
-		--// position the player to the correct location
-		player.CharacterAppearanceLoaded:Once(function(character: Model)  
-			if cframe then
+
+		if cframe then
+			--// position the player to the correct location
+			player.CharacterAppearanceLoaded:Once(function(character: Model)
 				character:PivotTo(cframe)
-			end
-		end)
+			end)
+		end
 	end
 end
 
@@ -38,9 +39,9 @@ function network_service.handle_damage(self: self, delta_time: number)
 		if humanoid.Health <= 0 then
 			continue
 		end
-		
-		--// damage the player
-		humanoid:TakeDamage(damage)
+
+		--// damage/heal the player
+		humanoid.Health = math.clamp(humanoid.Health - damage, 0, 100)
 	end
 end
 

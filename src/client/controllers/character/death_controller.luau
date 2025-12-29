@@ -7,6 +7,7 @@ local group = require("@pkg/group")
 
 local death_controller = {}
 
+death_controller.priority = 4
 death_controller.identifier = "death_controller"
 
 export type self = typeof(death_controller)

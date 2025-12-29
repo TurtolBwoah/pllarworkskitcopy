@@ -3,24 +3,34 @@
 
 local misc_utils = {}
 
-function misc_utils.traverse(root: Folder, tbl: { any })
+function misc_utils.traverse(root: Instance, tbl: { any }, parse_fn: (child: Instance) -> ())
 	for _, child in pairs(root:GetChildren()) do
 		if child:IsA("ModuleScript") then
-			tbl[child.Name] = require(child)
-		elseif child:IsA("Folder") then
-			misc_utils.traverse(child, tbl)
+			task.spawn(parse_fn, child)
+		else
+			misc_utils.traverse(child, tbl, parse_fn)
 		end
 	end
 end
 
-function misc_utils.copy(root: Folder, destination: Folder)
+function misc_utils.copy(root: Instance, destination: Folder)
 	for _, child in pairs(root:GetChildren()) do
 		if child:IsA("ModuleScript") then
 			child:Clone().Parent = destination
-		elseif child:IsA("Folder") then
+		else
 			misc_utils.copy(child, destination)
 		end
 	end
+end
+
+function misc_utils.get_table_size(tbl: { any }): number
+	local size = 0
+	
+	for _ in pairs(tbl) do
+		size += 1
+	end
+	
+	return size
 end
 
 return misc_utils

@@ -7,14 +7,14 @@
 -- This file is not meant to be edited
 
 _G._BLINK = _G._BLINK or {}
-if _G._BLINK["BLINK"] then
-	error("[Blink]: An instance of blink is already running with the remote scope \"BLINK\". Change the remote scope of either instance to avoid conflicts.")
+if _G._BLINK["PILLARWORKS_KIT"] then
+	error("[Blink]: An instance of blink is already running with the remote scope \"PILLARWORKS_KIT\". Change the remote scope of either instance to avoid conflicts.")
 end
-_G._BLINK["BLINK"] = true
+_G._BLINK["PILLARWORKS_KIT"] = true
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 
-local BASE_EVENT_NAME = "BLINK"
+local BASE_EVENT_NAME = "PILLARWORKS_KIT_BLINK"
 local Invocations = 0
 
 local SendSize = 64
@@ -165,6 +165,9 @@ local function WriteEVENT_reload_character(Value: CFrame?): ()
 	if Value ~= nil then
 		-- Allocate BLOCK: 24 bytes
 		local BLOCK_START = Allocate(24)
+		if typeof(Value) ~= "CFrame" then
+			error(`Expected Value to be of type CFrame, got {type(Value)} instead.`)
+		end
 		local Vector = Value.Position
 		buffer.writef32(SendBuffer, BLOCK_START + 0, Vector.X)
 		buffer.writef32(SendBuffer, BLOCK_START + 4, Vector.Y)
@@ -180,7 +183,10 @@ local function kit_WriteEVENT_damage(Value: number): ()
 	-- Allocate BLOCK: 2 bytes
 	local BLOCK_START = Allocate(2)
 	buffer.writeu8(SendBuffer, BLOCK_START + 0, 0)
-	buffer.writeu8(SendBuffer, BLOCK_START + 1, Value)
+	if typeof(Value) ~= "number" then
+		error(`Expected Value to be of type number, got {type(Value)} instead.`)
+	end
+	buffer.writei8(SendBuffer, BLOCK_START + 1, Value)
 end
 
 if not RunService:IsRunning() then

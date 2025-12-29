@@ -6,6 +6,7 @@ local rpc = require("@shared/modules/rpc")
 
 local rpc_controller = {}
 
+rpc_controller.priority = 7
 rpc_controller.identifier = "rpc_controller"
 
 export type self = typeof(rpc_controller)

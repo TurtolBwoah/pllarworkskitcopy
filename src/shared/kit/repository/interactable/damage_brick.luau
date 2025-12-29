@@ -18,7 +18,7 @@ local object = objects.register({
 
 	attributes = {
 		damage = attributes.attributes.number({
-			min = 1,
+			min = -100,
 			max = 100,
 			default = 10,
 		}),

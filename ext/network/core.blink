@@ -2,6 +2,9 @@ option ClientOutput = "../../src/shared/network/client.luau"
 option ServerOutput = "../../src/shared/network/server.luau"
 
 option Casing = Snake
+option WriteValidations = true
+
+option RemoteScope = "PILLARWORKS_KIT"
 
 event reload_character {
     From: Client,

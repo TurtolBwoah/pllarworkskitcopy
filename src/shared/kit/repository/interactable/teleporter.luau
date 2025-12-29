@@ -69,7 +69,7 @@ function on_hit(self: object, hit: BasePart, pillar: pillar)
 	    local seamless_offset = if seamless then origin.CFrame:ToObjectSpace(root.CFrame) else CFrame.new()
 		local true_offset = offset * seamless_offset:Inverse()
 		
-		local destination_cframe = destination.CFrame * true_offset
+		local destination_cframe = destination.CFrame * CFrame.new(0, character:GetExtentsSize().Y / 2, 0) * true_offset
 		
 		root.CFrame = destination_cframe
 	end

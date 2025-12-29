@@ -8,6 +8,7 @@ local iris = debugger.iris
 
 local debug_controller = {}
 
+debug_controller.priority = 6
 debug_controller.identifier = "debug_controller"
 
 export type self = typeof(debug_controller)

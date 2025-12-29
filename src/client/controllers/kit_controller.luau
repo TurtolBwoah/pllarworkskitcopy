@@ -18,6 +18,7 @@ local utility = std.utility
 
 local kit_controller = {}
 
+kit_controller.priority = 1
 kit_controller.identifier = "kit_controller"
 
 local OBJECT_TAG = "pillarworks_obj"

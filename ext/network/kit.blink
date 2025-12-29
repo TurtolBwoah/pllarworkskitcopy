@@ -1,8 +1,9 @@
 option Casing = Snake
+option WriteValidations = true
 
 event damage {
     From: Client,
     Type: Unreliable,
     Call: Polling,
-    Data: u8
+    Data: i8
 }
